@@ -12,6 +12,7 @@ class Node
     }
 }
 */
+
 class Solution {
     private static List<Integer> list=new ArrayList<>();
     public static void inorder(Node root){
