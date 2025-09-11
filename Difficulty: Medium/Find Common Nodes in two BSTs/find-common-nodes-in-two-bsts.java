@@ -18,4 +18,20 @@ class Solution {
         Collections.sort(list);
         return list;
     }
+    // public static boolean find(Node root,int target){
+    //     if(root==null) return false;
+    //     if(root.data==target) return true;
+    //     return (find(root.left,target) || find(root.right,target));
+    // }
+    // public static void inorder(Node r1,Node r2,ArrayList<Integer> list){
+    //     if(r1==null) return;
+    //     inorder(r1.left,r2,list);
+    //     if(find(r2,r1.data)) list.add(r1.data);
+    //     inorder(r1.right,r2,list);
+    // }
+    // public static ArrayList<Integer> findCommon(Node r1,Node r2){
+    //     ArrayList<Integer> list=new ArrayList<>();
+    //     inorder(r1,r2,list);
+    //     return list;
+    // }
 }
