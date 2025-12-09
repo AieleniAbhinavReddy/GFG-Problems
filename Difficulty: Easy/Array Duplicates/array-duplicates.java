@@ -1,10 +1,12 @@
 class Solution {
     public ArrayList<Integer> findDuplicates(int[] arr) {
         ArrayList<Integer> list=new ArrayList<>();
-        Arrays.sort(arr);
-        for(int i=0;i<arr.length;i++){
-            if(i==arr.length-1) break;
-            if(arr[i]==arr[i+1]) list.add(arr[i]);
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int n:arr){
+            map.put(n,map.getOrDefault(n,0)+1);
+        }
+        for(int n:map.keySet()){
+            if(map.get(n)>1) list.add(n);
         }
         return list;
     }
