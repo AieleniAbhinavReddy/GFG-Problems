@@ -11,39 +11,38 @@ class Node {
 */
 
 class Solution {
-    static int length(Node head){
-        int c=0;
-        while(head!=null){
-            c++;
-            head=head.next;
+    static int getLen(Node head){
+        Node curr=head;
+        int len=0;
+        while(curr!=null){
+            len++;
+            curr=curr.next;
         }
-        return c;
-    }
-    static Node newHead(Node head,int diff){
-        while(diff-->0){
-            head=head.next;
-        }
-        return head;
-    }
-    static Node getRes(Node h1,Node h2){
-        while(h1!=null && h2!=null){
-            if(h1==h2) return h1;
-            h1=h1.next;
-            h2=h2.next;
-        }
-        return null;
+        return len;
     }
     public Node intersectPoint(Node head1, Node head2) {
-        int l1=length(head1);
-        int l2=length(head2);
-        int diff=Math.abs(l1-l2);
-        if(l1>l2){
-            head1=newHead(head1,diff);
-            return getRes(head1,head2);
-        }else if(l2>l1){
-            head2=newHead(head2,diff);
-            return getRes(head1,head2);
+        int len1=getLen(head1),len2=getLen(head2);
+        int n=Math.abs(len1-len2);
+        if(len1==len2){
+            Node c1=head1,c2=head2;
+            while(c1!=null && c2!=null){
+                if(c1==c2) return c1;
+                c1=c1.next;
+                c2=c2.next;
+            }
+        }else{
+            Node bh=len1>len2? head1:head2;
+            Node sh=len1<len2? head1:head2;
+            while(n>0 && bh!=null){
+                bh=bh.next;
+                n-=1;
+            }
+            while(bh!=null && sh!=null){
+                if(bh==sh) return bh;
+                bh=bh.next;
+                sh=sh.next;
+            }
         }
-        return getRes(head1,head2);
+        return null;
     }
 }
