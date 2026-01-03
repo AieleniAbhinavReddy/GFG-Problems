@@ -3,20 +3,13 @@
 class Solution {
     // Function to return list containing first n fibonacci numbers.
     public static int[] fibonacciNumbers(int n) {
-        int[] arr=new int[n];
-        if(n==0 || n==1) return arr;
-        if(n==2){
-            arr[1]=1;
-            return arr;
+        int[] res=new int[n];
+        if(n==1) return res;
+        res[0]=0;
+        res[1]=1;
+        for(int i=2;i<res.length;i++){
+            res[i]=res[i-1]+res[i-2];
         }
-        arr[0]=0;
-        arr[1]=1;
-        n-=2;
-        int i=2;
-        while(n-->0){
-            arr[i]=arr[i-1]+arr[i-2];
-            i++;
-        }
-        return arr;
+        return res;
     }
 }
