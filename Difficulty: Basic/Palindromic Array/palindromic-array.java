@@ -1,18 +1,35 @@
 /*Complete the Function below*/
 class Solution {
-    static boolean checkPalin(int num){
-        String n=Integer.toString(num);
-        String revn=new StringBuilder(n).reverse().toString();
-        return n.equals(revn);
-    }
     public static boolean isPalinArray(int[] arr) {
-        boolean flag=true;
         for(int n:arr){
-            if(!checkPalin(n)){
-                flag=false;
-                break;
+            String num=Integer.toString(n);
+            String rev=new StringBuilder(num).reverse().toString();
+            if(!num.equals(rev)){
+                return false;
             }
         }
-        return flag;
+        return true;
     }
 }
+
+/*
+Approach : 
+we use a loop
+string methods
+condition
+
+loop = iterate elements in arr one by one
+string = checking if a number is palindrome
+condition = palindrome checking
+
+111 -> palindrome? -> true
+222 -> palindrome? -> true
+333 -> palindrome? -> true
+20 -> palindrome? -> output false
+444 -> palindrome? -> true
+555 -> palindrome? -> true
+
+output true
+
+
+*/
