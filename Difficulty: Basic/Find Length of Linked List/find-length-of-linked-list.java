@@ -7,11 +7,22 @@ class Node{
 
 class Solution {
     public int getCount(Node head) {
-        int size=0;
-        while(head != null){
-            size++;
-            head=head.next;
+        int len=0;
+        Node curr=head;
+        while(curr!=null){
+            len+=1;
+            curr=curr.next;
         }
-        return size;
+        return len;
     }
 }
+/*
+Approach :
+variable
+loop
+
+curr,len
+loop = to go to each and every node and count the node for total length
+display the output
+
+*/
