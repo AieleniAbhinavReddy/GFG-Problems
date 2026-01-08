@@ -14,16 +14,12 @@ class Node {
 // if no such node is present then return -1
 class Solution {
     public int modularNode(Node head, int k) {
-        int val=-1;
-        int i=1;
-        Node curr=head;
-        while(curr != null){
-            if(i%k==0){
-                val=curr.data;
-            }
+        int res=-1,i=1;
+        while(head!=null){
+            if(i%k==0) res=head.data;
             i++;
-            curr=curr.next;
+            head=head.next;
         }
-        return val;
+        return res;
     }
 }
