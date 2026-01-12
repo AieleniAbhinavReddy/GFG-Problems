@@ -29,10 +29,10 @@ class Solution {
             fast=fast.next.next;
         }
         if(len%2==0){
-            Node temp=prev.next;
+            // Node temp=prev.next;
             Node newn=new Node(x);
             prev.next=newn;
-            newn.next=temp;
+            newn.next=slow;
         }else{
             Node temp=slow.next;
             Node newn=new Node(x);
