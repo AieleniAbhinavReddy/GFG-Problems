@@ -1,21 +1,21 @@
 class Solution {
     public void sort012(int[] arr) {
-        int c1=0,c2=0,c3=0;
+        int a=0,b=0,c=0;
         for(int n:arr){
-            if(n==0) c1++;
-            if(n==1) c2++;
-            if(n==2) c3++;
+            if(n==0) a++;
+            if(n==1) b++;
+            if(n==2) c++;
         }
         for(int i=0;i<arr.length;i++){
-            if(c1>0){
+            if(a!=0){
                 arr[i]=0;
-                c1--;
-            }else if(c2>0){
+                a--;
+            }else if(b!=0){
                 arr[i]=1;
-                c2--;
+                b--;
             }else{
                 arr[i]=2;
-                c3--;
+                c--;
             }
         }
     }
