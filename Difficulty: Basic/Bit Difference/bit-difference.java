@@ -1,25 +1,22 @@
+import java.util.*;
+
 class Solution {
+    // Function to find number of bits to be flipped to convert a to b
     public static int countBitsFlip(int a, int b) {
-        StringBuilder s1=new StringBuilder(Integer.toString(a,2));
-        StringBuilder s2=new StringBuilder(Integer.toString(b,2));
-        int len=Math.max(s1.length(),s2.length());
-        if(s1.length()<len){
-            int iter=len-s1.length();
-            while(iter-->0){
-                s1.insert(0,'0');
-            }
-        }else{
-            int iter=len-s2.length();
-            while(iter-->0){
-                s2.insert(0,'0');
-            }
+        
+        // 1. XOR a and b to find differing bits
+        int xorResult = a ^ b;
+        
+        // 2. Count the number of set bits (1s) in xorResult
+        int count = 0;
+        
+        // Using Brian Kernighan’s Algorithm for efficiency
+        while (xorResult > 0) {
+            // This operation clears the rightmost set bit
+            xorResult = xorResult & (xorResult - 1);
+            count++;
         }
-        int res=0;
-        for(int i=0;i<s1.length();i++){
-            if(s1.charAt(i)!=s2.charAt(i)){
-                res++;
-            }
-        }
-        return res;
+        
+        return count;
     }
 }
