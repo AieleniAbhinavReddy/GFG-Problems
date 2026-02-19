@@ -1,21 +1,18 @@
-// User function Template for Java
 class Solution {
     public static int[] productExceptSelf(int arr[]) {
-        int n=arr.length;
-        int[] lp=new int[n];
-        int[] rp=new int[n];
-        lp[0]=1;
-        rp[n-1]=1;
-        for(int i=1;i<n;i++){
-            lp[i]=lp[i-1]*arr[i-1];
+        int n = arr.length;
+        int[] res = new int[n];
+        // Step 1: Prefix products
+        res[0] = 1;
+        for (int i = 1; i < n; i++) {
+            res[i] = res[i - 1] * arr[i - 1];
         }
-        for(int i=n-2;i>=0;i--){
-            rp[i]=rp[i+1]*arr[i+1];
+        // Step 2: Suffix products and final multiplication
+        int suffix = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            res[i] = res[i] * suffix;
+            suffix *= arr[i];
         }
-        int[] p=new int[n];
-        for(int i=0;i<n;i++){
-            p[i]=lp[i]*rp[i];
-        }
-        return p;
+        return res;
     }
 }
