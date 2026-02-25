@@ -2,12 +2,14 @@
 
 class Solution {
     String removeDuplicates(String s) {
-        StringBuilder sb=new StringBuilder();
+        boolean[] seen=new boolean[256];
+        StringBuilder res=new StringBuilder();
         for(char c:s.toCharArray()){
-            if(sb.indexOf(c+"")==-1){
-                sb.append(c);
+            if(!seen[c]){
+                seen[c]=true;
+                res.append(c);
             }
         }
-        return sb.toString();
+        return res.toString();
     }
 }
